@@ -1,7 +1,8 @@
 {
     "require": {
         "ext-mbstring":" *",
-        "codeception/codeception": "2.0.*"
+        "codeception/codeception": "2.0.*",
+        "fzaninotto/faker": "*"
        
         
     },
