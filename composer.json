@@ -1,8 +1,12 @@
 {
     "require": {
+
         "ext-mbstring":" *",
         "codeception/codeception": "2.0.*",
-        "fzaninotto/faker": "*"
+        "fzaninotto/faker": "*",
+        "yiisoft/yii2":"2.0.12"
+
+
        
         
     },
@@ -10,4 +14,6 @@
         "require-dev": {
         "phpunit/phpunit": "4.0.*"
     }
+
+
 }
