@@ -1,3 +1,4 @@
 /nbproject/private/
 tests/_output/*
 vendor/
+config/db.php

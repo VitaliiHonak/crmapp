@@ -18,7 +18,7 @@ use Yii;
  * For the simple created yii application index.php will be like this:
  * <pre>
  * // change the following paths if necessary
- * $yii=dirname(__FILE__).'/../yii/framework/yii.php';
+ * $yii=dirname(__FILE__).'/../yii/framework/yii';
  * $config=dirname(__FILE__).'/protected/config/main.php';
  *
  * // remove the following lines when in production mode
