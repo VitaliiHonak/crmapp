@@ -6,7 +6,7 @@
  * Time: 22:12
  */
 
-namespace app\models\customer;
+namespace app\models\customers;
 
 class Customer{
     public $name;

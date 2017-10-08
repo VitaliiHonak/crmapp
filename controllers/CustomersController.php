@@ -7,10 +7,11 @@
  */
 
 namespace app\controllers;
-use app\models\customer\Customer;
-use app\models\customer\CustomerRecord;
-use app\models\customer\Phone;
-use app\models\customer\PhoneRecord;
+use app\models\Customer;
+use app\models\customers\CustomerRecord;
+use app\models\Phone;
+use app\models\customers\PhoneRecord;
+use yii\data\ArrayDataProvider;
 use \yii\web\Controller;
 
 class CustomersController extends Controller{
@@ -24,7 +25,17 @@ class CustomersController extends Controller{
 
     public function actionAdd()
     {
-        return $this->render('add');
+
+        $customer = new CustomerRecord;
+        $phone = new PhoneRecord;
+
+        if ($this->load($customer, $phone, $_POST))
+        {
+            $this->store($this->makeCustomer($customer,$phone));
+            return $this->redirect('/customers');
+        }
+
+        return $this->render('add', compact('customer','phone'));
     }
 
     /**
@@ -67,7 +78,48 @@ class CustomersController extends Controller{
     }
 
 
+    private  function load(CustomerRecord $customer, PhoneRecord $phone, array $post){
+        return $customer->load($post)
+            and $phone->load($post)
+            and $customer->validate()
+            and $phone->validate(['number']);
+    }
 
+    private function findRecordsByQuery()
+    {
+        $number = Yii::$app->request->get('phone_number');
+        $records = $this->getRecordsByPhoneNumber($number);
+        $dataProvider = $this->wrapIntoDataProvider($records);
+        return $dataProvider;
+    }
+
+    private function wrapIntoDataProvider($data)
+    {
+        return new ArrayDataProvider(
+            [
+                'allModels'=>$data,
+                'pagination'=>false
+            ]
+        );
+    }
+
+    private function getRecordsByPhone($number)
+    {
+        $phone_record = PhoneRecord::findOne(['number'=>$number]);
+        if (!$phone_record)
+            return[];
+
+        $customer_record = CustomerRecord::findOne($phone_record->customer_id);
+        if (!$customer_record)
+            return[];
+
+        return [$this->makeCustomer($customer_record, $phone_record)];
+    }
+
+    public function actionQurey()
+    {
+        return $this->render('query');
+    }
 
 
 }

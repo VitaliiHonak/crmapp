@@ -6,7 +6,7 @@
  * Time: 20:30
  */
 
-namespace app\models\customer;
+namespace app\models\customers;
 
 use yii\db\ActiveRecord;
 

@@ -6,7 +6,7 @@
  * Time: 22:17
  */
 
-namespace app\models\customer;
+namespace app\models\customers;
 
 class Phone{
     public $number;

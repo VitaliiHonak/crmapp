@@ -14,5 +14,10 @@ return [
         'request'=>[
             'cookieValidationKey'=>'1111',
         ],
+        'urlManager'=>[
+            'enablePrettyUrl'=>true,
+            'showScriptName'=>false
+        ]
+
     ]
 ];

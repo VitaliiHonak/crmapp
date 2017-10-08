@@ -6,7 +6,7 @@
  * Time: 22:06
  */
 
-namespace app\models\customer;
+namespace app\models\customers;
 use yii\db\ActiveRecord;
 
 class PhoneRecord extends ActiveRecord
